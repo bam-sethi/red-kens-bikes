@@ -1,5 +1,5 @@
 require_relative './spec_helper'
-require_relative '../lib/bike'
+
 
 #we are describing the functionality of the specific Class Bike
 describe Bike do
