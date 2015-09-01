@@ -23,7 +23,7 @@ describe Garage do
 
     puts garage.fix_bike(bike).inspect
 
-    expect(working_bike).to eq [working_bike]
+    expect(working_bike).to eq working_bike
   end
 
   it 'should release a bike' do
