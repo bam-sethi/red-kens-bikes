@@ -1,7 +1,10 @@
 class Garage
 
-  def initialize
+  DEFAULT_CAPACITY = 8
+
+  def initialize(options = {})
     @bikes = []
+    @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
   end
 
   def bike_count
@@ -9,6 +12,7 @@ class Garage
   end
 
   def take_bike bike
+    raise 'Garage is full' if full?
     @bikes << bike
   end
 

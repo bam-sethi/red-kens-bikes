@@ -2,7 +2,11 @@ require_relative './spec_helper'
 
 describe Garage do
 
-  let(:garage) { Garage.new }
+  def fill_garage garage
+    10.times { garage.take_bike(Bike.new) }
+  end
+
+  let(:garage) { Garage.new({capacity: 10})}
   let(:bike) { Bike.new }
 
   it 'should be empty when we build it' do
@@ -12,7 +16,7 @@ describe Garage do
   it 'should take a bike' do
     garage.take_bike(bike)
 
-    expect(garage.bike_count).to eq 1
+    expect(garage(garage).bike_count).to eq 1
   end
 
 
@@ -31,7 +35,12 @@ describe Garage do
 
     expect(garage.bike_count).to eq 0
   end
+  
+    it 'should not accept a bike if it\'s full' do 
+    fill_garage garage
 
+    expect {garage.take_bike(bike)}.to raise_error 'Garage is full'
+  end
 
 
 end
